@@ -112,18 +112,6 @@ document.getElementById("ardoraActCanvas").style.zIndex=0; document.getElementBy
 },seg*1000);}
 function backTime(seg){ setTimeout(function(){timeInterval=setInterval("paintTab()",1000);isShowMessage=false;},seg*1000);}
 function backSol(seg,oldTypeGame){setTimeout(function(){showSol(oldTypeGame);},seg*1000);}
-function paintButtonTime(){var actArea=document.getElementById("ardoraActCanvas"); document.getElementById("ardoraActCanvas").style.zIndex=5;document.getElementById("ardoraActCanvas").style["visibility"]="visible";
-document.getElementById("ardoraTab").style["visibility"]="hidden";
-$("#ardoraActCanvas").css("cursor", "pointer");if (tiTime || tiAttempts || tiScore || tiSuccesses ){clearInterval(timeInterval);}var canvas = document.getElementById("ardoraActCanvas");
-var contexto = canvas.getContext("2d");canvas.width = canvas.width;contexto.globalAlpha = 0.98;contexto.fillStyle = colorButton;contexto.fillRect(0,0,canvas.width,canvas.height);
-contexto.lineWidth = 2;contexto.strokeStyle = colorSele;contexto.rect(5,5,canvas.width-10,canvas.height-10);contexto.stroke();
-contexto.font="14px " + fMenssage ;var metricsW = contexto.measureText(textButtonTime).width;var x=(canvas.width / 2)-(metricsW / 2);var y=(canvas.height / 2);
-contexto.beginPath(); contexto.globalAlpha = 1;contexto.lineWidth = 2;contexto.fillStyle = colorBack;var xAnim=canvas.width/2;var wAnim=0;interval = setInterval(function () {
-contexto.strokeStyle = colorText;roundedRect(contexto,xAnim,y-20,wAnim,30,5,colorBack);xAnim-=1;wAnim+=2;if (wAnim>metricsW+30){
-clearInterval(interval);contexto.shadowColor = "black";contexto.shadowBlur = 20;contexto.shadowOffsetX = 10;contexto.shadowOffsetY = 10;
-contexto.stroke();contexto.beginPath();contexto.textAlign = "left";contexto.fillStyle = colorText;contexto.fillText(textButtonTime,x,y);contexto.lineWidth = 5;contexto.stroke();}},1);
-$("#ardoraActCanvas").mousedown(function(e){if (tiTime || tiAttempts || tiScore || tiSuccesses ){timeInterval=setInterval("paintTab()",1000);$("#ardoraActCanvas").css("cursor", "default");
-$("#ardoraActCanvas").unbind("mousedown");document.getElementById("ardoraActCanvas").style.zIndex=0;document.getElementById("ardoraActCanvas").style["visibility"]="hidden";document.getElementById("ardoraTab").style["visibility"]="visible";paintBack();}});}
 function cssColors(){
 $("body").css("background-color",colorBack);$("#ardoraMain").css("color",colorText);$("#ardoraMain").css("font-family",fEnun);$("#ardoraAct").css("font-family",fActi);$("#ardoraTag").css("font-family",fActi);
 document.styleSheets[0].insertRule("label:before { background-color: "+colorButton+"; }", 0);

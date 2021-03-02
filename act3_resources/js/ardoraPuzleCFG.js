@@ -7,7 +7,7 @@ var score=0; scoreMax=1; scoreInc=1; scoreDec=1
 var typeGame=1;
 var tiTime=false;
 var tiTimeType=0;
-var tiButtonTime=true;
+var tiButtonTime=false;
 var textButtonTime="Comenzar";
 var tiSuccesses=true;
 var tiAttempts=false;

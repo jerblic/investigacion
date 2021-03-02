@@ -46,9 +46,10 @@ canvas {display: inline-block;}
 template{display: none;}
 [hidden]{display: none;}
 /*!END normalize.css v7.0.0*/
+html{overflow:hidden;}
 .ui-corner-all{ -webkit-border-radius: 4px; border-radius: 4px;}
-body{background-color:black;}
-#ardoraMain{ font-family:Verdana, Geneva, sans-serif; color: #F0F0F0; padding: 5px; position: relative;}
+body{background-color:#FFFDFD;}
+#ardoraMain{ font-family:Verdana, Geneva, sans-serif; color: #000000; padding: 5px; position: relative;}
 #ardoraEnu{ font-size: 12px; position: relative; padding: 5px; margin-bottom: 10px;
 text-align: justify;
 }
@@ -57,23 +58,26 @@ border-width: 1px;-webkit-border-radius: 4px;-khtml-border-radius: 4px;border-ra
 -webkit-box-shadow: 4px 4px 4px rgba(50, 50, 50, 0.5);box-shadow: 4px 4px 4px rgba(50, 50, 50, 0.5);font-size: 10px;
 background:rgba(255,128,0,0.5);}
 #ardoraAlumSCORM p{padding:0px;margin:0px;padding-left: 2px;}
+#buttonOk{ position: absolute; height: 70px; width: 70px; bottom: 0px; cursor: pointer;border-style: solid; border-width: 1px;
+-webkit-border-radius: 4px;-khtml-border-radius: 4px;border-radius: 4px;
+-webkit-box-shadow: 4px 4px 4px rgba(50, 50, 50, 0.5); box-shadow: 4px 4px 4px rgba(50, 50, 50, 0.5);}
 #ardoraTabCanvas{width: 70px;border-style: solid;border-width: 1px;-webkit-border-radius: 4px;-khtml-border-radius: 4px;border-radius:4px;-webkit-box-shadow: 4px 4px 4px rgba(50, 50, 50, 0.5);box-shadow: 4px 4px 4px rgba(50,50,50,0.5);height:98px;} 
-#ardoraActCanvas{z-index: 0; position: absolute; visibility:hidden;top:0; left:0;}
-#ardoraAct{position: relative; margin-left: 10px; margin-right:10px; padding:0 0 0 0; float: left;
+#ardoraActCanvas{z-index: 0; position: absolute; visibility:hidden; top:0px; left:10px;}
+#ardoraActCanvasAnim{z-index: 1; position: absolute;}
+#ardoraAct{ width:750px; height:400px;position: relative; margin-right: 10px; padding: 10px; float: left;font-family:Verdana, Geneva, sans-serif;text-align: justify;
 }
-#ardoraTab{width: 70px; height:320px;position: relative; visibility: visible;padding:5px;float:left;}
-.bLetter{display: table; font-size:15px;width: 27px;height:27px;border-style:solid;text-align:center;cursor:pointer;
-border-radius:4px;position:absolute;background-color:#91962F;color:#FFFFFF;
--webkit-box-shadow: 4px 4px 4px rgba(50, 50, 50, 0.5);box-shadow: 4px 4px 4px rgba(50, 50, 50, 0.5);
-}
-.bLetter p{padding:0px;margin:4px 0 0 0;}
-.letterOk{opacity:0.5;display:table;font-size:15px;width:27px; height:27px;border-style:solid;text-align:center;cursor:not-allowed;
--webkit-border-radius:4px;-khtml-border-radius:4px;border-radius:4px;position:absolute;}
-.letterOk p{padding: 0px; margin: 4px 0 0 0;}
-.bGame{display: table; font-size:36px;width:48px;height:48px;border-style:solid;text-align:center;cursor:auto;
--webkit-border-radius:4px;-khtml-border-radius:4px;border-radius:4px;position:absolute;
--webkit-box-shadow:inset 4px 4px 4px rgba(50, 50, 50, 0.5);box-shadow:inset 4px 4px 4px rgba(50, 50, 50, 0.5);
-border-width:1px;}
-.bGame p{padding: 0px; margin: 4px 0 0 0;}
+.txtCell{ font-family:Verdana, Geneva, sans-serif;
+position:absolute;width:420px;height:12px;
+font-size:12px;padding:0px;margin:0px;z-index:1;border:darkslategray;border-style:dotted;border-width:1px;}
+.txtCellHome{ font-family:fontActi;position:absolute;width:420px;height:400px;
+font-size:12px;padding:0px;margin: 0px;text-align: center;z-index:2; top: 20px; left:335px;margin-top: 10px;}
+.txtCell_txt{ font-family:Verdana, Geneva, sans-serif;
+border-style:solid;border-width:1px;border-color:#000000;border-radius:4px;background-color:#FFFFFF;
+-moz-box-shadow: 3px 3px 3px rgba(50, 50, 50, 0.75);-webkit-box-shadow: 3px 3px 3px rgba(50, 50, 50, 0.75);box-shadow: 3px 3px 3px rgba(50, 50, 50, 0.75);
+height:17px; cursor: pointer;}
+.txtCell p{margin: 0px;padding: 2px;}.txtCell_txt p{margin: 0px; padding: 2px;cursor: pointer;}
+#ardoraTab{width: 70px;height:320px; position: relative; visibility: visible;padding:5px;float:left;}
 .imaLeft{margin-right:5px; margin-bottom:5px;} .imaRight{margin-left:5px; margin-bottom:5px;}
-#ardoraQuest{font-family:Verdana, Geneva, sans-serif;font-size:19px;color:#000000;font-weight:bolder;text-align: justify;padding: 0 5px 0 5px;} #ardoraImage{width: 100%; text-align: center;} #ardoraQuest img{cursor: pointer;}
+.ardoraDropInput{border:none;visibility:hidden; width:420px; height:22px;}
+#ardoraAct p{font-size:12px; width:320px; line-height:18px;}
+#ardoraHelpCanvas{z-index: 0; position: absolute; visibility:hidden; top:0px; left:10px;}

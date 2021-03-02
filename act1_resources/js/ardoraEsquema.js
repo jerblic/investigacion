@@ -7,7 +7,6 @@ function initAct(){
 if (tiAval){parent.iniciaActividade()}
 makeChart($("#org"),depth);
 $(".nodeNew").draggable({cursor:"move",distance: 40,helper:"clone",opacity:0.8,revert:"invalid",revertDuration:100,snap:"div.node.expanded",snapMode:"inner",stack:"div.node"});
-if ((tiTime) && (tiButtonTime)){paintButtonTime();}
 }
 function randomSort(){
 var opt2=new Array();for (i=0;i<nodeES.length;i++){opt2[i]="~";}for (i=0;i<nodeES.length;i++){var num=Math.floor((Math.random()*nodeES.length));

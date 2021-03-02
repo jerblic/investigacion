@@ -15,7 +15,7 @@ out: function() { var cssObj = { "border-color" : "black", "border-style": "dott
 $(".imaCell_img img").dblclick(function (event) {showImage();setTimeout(function () {
 document.getElementById("ardoraActCanvas").style.zIndex = 0;document.getElementById("ardoraActCanvas").style["visibility"] = "hidden";
 },1000);});
-if (tiAval){parent.iniciaActividade()}if ((tiTime) && (tiButtonTime)){paintButtonTime();}}
+if (tiAval){parent.iniciaActividade()}}
 function showImage(){var canvas = document.getElementById("ardoraActCanvas");document.getElementById("ardoraActCanvas").style.zIndex = 5;
 document.getElementById("ardoraActCanvas").style["visibility"] = "visible";canvas.width = canvas.width;var contexto = canvas.getContext("2d");
 contexto.fillStyle = colorBack;contexto.fillRect(0, 0, canvas.width, canvas.height);

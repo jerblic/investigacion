@@ -3,7 +3,7 @@
 //para otros usos contacte con el autor
 function initAct(){
 calcMaxWidth();paintQuest();paintbGame();paintLetters();$(".bLetter").css("background",colorButton);
-if (tiAval){parent.iniciaActividade()}if ((tiTime) && (tiButtonTime)){paintButtonTime();}
+if (tiAval){parent.iniciaActividade()}
 }
 function paintQuest(){$("#ardoraQuest").html("");
 if (audioW[indexG].localeCompare("")==0){$("#ardoraQuest").html("<p>" + questionW[indexG] + "</p>");}else{

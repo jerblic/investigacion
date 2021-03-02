@@ -2,31 +2,29 @@
 //bajo licencia Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
 //para otros usos contacte con el autor
 function initAct(){
-if (tiAval){parent.iniciaActividade()}if ((tiTime) && (tiButtonTime)){paintButtonTime();}
+if (tiAval){parent.iniciaActividade()}
 $("#ardoraAct").mousemove(function (e) {var posX = e.pageX - this.offsetLeft;var posY = e.pageY - this.offsetTop;drawJoin(posX,posY);});
 $(".conten").bind("click", function (e) {if (sel1.localeCompare("")==0){sel1=$(this).attr("id");$(this).css({background: colorSele, borderColor: colorButton });
-var color1=colorSele;var color2=colorBack;
-$(this).css("background","-webkit-gradient(linear, left top, left bottom, from("+color1+"), to("+color2+"))");
-$(this).css("background","-webkit-linear-gradient("+color1+", "+color2+")");
-$(this).css("background","-moz-linear-gradient(top, "+color1+", "+color2+")");
-$(this).css("background","-ms-linear-gradient("+color1+", "+color2+")");
-$(this).css("background","-o-linear-gradient("+color1+", "+color2+")");
-$(this).css("background","linear-gradient("+color1+", "+color2+")");
-$(this).css("filter","progid:DXImageTransform.Microsoft.Alpha(startColorstr='"+color1+"', endColorstr='"+color2+"')");
+var color2=colorSele;var color1=colorBack;
+$(this).css("background","-webkit-radial-gradient(center, ellipse, "+color1+","+color2+")");
+$(this).css("background","-moz-radial-gradient(center,ellipse, "+color1+", "+color2+")");
+$(this).css("background","-ms-radial-gradient(center, ellipse, "+color1+", "+color2+")");
+$(this).css("background","-o-radial-gradient(center, ellipse, "+color1+", "+color2+")");
+$(this).css("background","radial-gradient(ellipse at center, "+color1+", "+color2+")");
+$(this).css("filter","progid:DXImageTransform.Microsoft.gradient(startColorstr='"+color1+"', endColorstr='"+color2+"')");
 }else{if (Math.abs(parseInt($(this).attr("id").substr(6,1))-parseInt(sel1.substr(6,1)))>1 || $(this).attr("id").substr(0,7)==sel1.substr(0,7)){
 $("#"+sel1).css({ background: colorBack, borderColor: colorText });sel1="";drawJoin(0,0);}else{join1.push(sel1);join2.push($(this).attr("id"));
 $("#"+sel1).css({ background: colorBack, borderColor: colorText });sel1="";drawJoin(0,0);drawGame();}}});
 $( ".conten" ).dblclick(function(e) {delJoin($(this).attr("id"));});
 $(".conten").bind("taphold", function (e) {e.preventDefault();delJoin($(this).attr("id"));});
 $(".conten").mouseenter(function () {$(this).css({background: colorSele,borderColor: colorButton});
-var color1=colorSele;var color2=colorBack;
-$(this).css("background","-webkit-gradient(linear, left top, left bottom, from("+color1+"), to("+color2+"))");
-$(this).css("background","-webkit-linear-gradient("+color1+", "+color2+")");
-$(this).css("background","-moz-linear-gradient(top, "+color1+", "+color2+")");
-$(this).css("background","-ms-linear-gradient("+color1+", "+color2+")");
-$(this).css("background","-o-linear-gradient("+color1+", "+color2+")");
-$(this).css("background","linear-gradient("+color1+", "+color2+")");
-$(this).css("filter","progid:DXImageTransform.Microsoft.Alpha(startColorstr='"+color1+"', endColorstr='"+color2+"')");
+var color2=colorSele;var color1=colorBack;
+$(this).css("background","-webkit-radial-gradient(center, ellipse, "+color1+","+color2+")");
+$(this).css("background","-moz-radial-gradient(center,ellipse, "+color1+", "+color2+")");
+$(this).css("background","-ms-radial-gradient(center, ellipse, "+color1+", "+color2+")");
+$(this).css("background","-o-radial-gradient(center, ellipse, "+color1+", "+color2+")");
+$(this).css("background","radial-gradient(ellipse at center, "+color1+", "+color2+")");
+$(this).css("filter","progid:DXImageTransform.Microsoft.gradient(startColorstr='"+color1+"', endColorstr='"+color2+"')");
 });$(".conten").mouseleave(function () {if ($(this).attr("id")!=sel1){ $(this).css({ background: colorBack, borderColor: colorText });}});
 }
 function delJoin(ele){var pos = join1.indexOf(ele);while (pos>-1){join1.splice(pos,1);join2.splice(pos,1);pos = join1.indexOf(ele);}

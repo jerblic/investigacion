@@ -60,6 +60,7 @@ background:rgba(255,128,0,0.5);}
 #buttonOk{ position: absolute; height: 70px; width: 70px; bottom: 0px; cursor: pointer;border-style: solid; border-width: 1px;
 -webkit-border-radius: 4px;-khtml-border-radius: 4px;border-radius: 4px;
 -webkit-box-shadow: 4px 4px 4px rgba(50, 50, 50, 0.5); box-shadow: 4px 4px 4px rgba(50, 50, 50, 0.5);}
+#ardoraTabCanvas{width: 70px;border-style: solid;border-width: 1px;-webkit-border-radius: 4px;-khtml-border-radius: 4px;border-radius:4px;-webkit-box-shadow: 4px 4px 4px rgba(50, 50, 50, 0.5);box-shadow: 4px 4px 4px rgba(50,50,50,0.5);height:98px;} 
 #ardoraActCanvas{z-index: 0; position: absolute; visibility:hidden;top:0; left:5px;}
 #ardoraAct{position: relative; margin-right: 10px; padding: 5px; float: left;
 }

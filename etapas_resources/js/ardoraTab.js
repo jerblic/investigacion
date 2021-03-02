@@ -1,10 +1,27 @@
 //Creado con Ardora - www.webardora.net
 //bajo licencia Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
 //para otros usos contacte con el autor
-var timeInterval; $(document).ready(function() {randomSort();timeInterval=setInterval("paintTab()",1000);
+var timeInterval; $(document).ready(function() {paintOk();randomSort();timeInterval=setInterval("paintTab()",1000);
 var canWidth=$("#ardoraAct").css("width").replace("px","");var canHeight=$("#ardoraAct").css("height").replace("px","");$("#ardoraActCanvas").attr({"width": canWidth,"height": canHeight})
 $("#ardoraActCanvasAnim").attr({"width": canWidth,"height": canHeight});
+$("#buttonOk").mouseenter(function(){$(this).css("-webkit-box-shadow"," 0px 0px 0px rgba(50, 50, 50, 0.5)");
+$(this).css("box-shadow" , "0px 0px 0px rgba(50, 50, 50, 0.75)");removeOk();
+}).mouseleave(function() { $(this).css("-webkit-box-shadow"," 4px 4px 4px rgba(50, 50, 50, 0.5)"); $(this).css("box-shadow" , "4px 4px 4px rgba(50,50,50,0.5)"); paintOk();}).mousedown(function(){if (typeGame!=99){isCorrect();}});
 initAct();})
+function paintOk(){ var canvas = document.getElementById("buttonOkCanvas"); var contexto = canvas.getContext("2d");
+contexto.fillStyle =colorButton;contexto.fillRect(1,1,canvas.width-2,canvas.height-2);
+var x=canvas.width-2; var grd = contexto.createRadialGradient(x/2, x/2,1, x/2, x/2, 30);grd.addColorStop(0,colorBack);
+grd.addColorStop(1,colorSele);contexto.fillStyle = grd; contexto.fillRect(10, 10,canvas.width-20,canvas.height-20);
+contexto.lineWidth = 1; contexto.strokeStyle =colorText;
+contexto.fillStyle =colorText;contexto.beginPath();contexto.strokeRect(10, 10,canvas.width-20,canvas.height-20);
+contexto.font="bold 36px Verdana"; contexto.textAlign = "left"; contexto.fillText("?",25,48); contexto.stroke();}
+function removeOk(){ var canvas = document.getElementById("buttonOkCanvas"); var contexto = canvas.getContext("2d");
+contexto.fillStyle =colorSele;contexto.fillRect(1,1,canvas.width-2,canvas.height-2);
+var x=canvas.width-2; var grd = contexto.createRadialGradient(x/2, x/2,1, x/2, x/2, 30);grd.addColorStop(0,colorBack);
+grd.addColorStop(1, colorButton);contexto.fillStyle = grd; contexto.fillRect(10, 10,canvas.width-20,canvas.height-20);
+contexto.lineWidth = 1; contexto.strokeStyle =colorText;
+contexto.fillStyle = colorText;contexto.beginPath();contexto.strokeRect(10, 10,canvas.width-20,canvas.height-20);
+contexto.font="bold 36px Verdana"; contexto.textAlign = "left"; contexto.fillText("?",25,48); contexto.stroke();}
 function paintTab(){if (document.getElementById("ardoraTabCanvas")!=null){var canvas = document.getElementById("ardoraTabCanvas");var contexto = canvas.getContext("2d");contexto.fillStyle =$(canvas).css("background-color");
 contexto.clearRect(0,0,canvas.width,canvas.height); contexto.lineWidth = 1; contexto.strokeStyle = "black";contexto.fillStyle = "black";if (!isShowMessage){timeAct-=1;}contexto.font="8px Verdana";
 var profundidade=1; var x = canvas.width / 2; var y = canvas.width / 2+19;
@@ -72,9 +89,9 @@ xAnim-=1;wAnim+=2;if (wAnim>canvas.width-80){clearInterval(interval);contexto.sh
 contexto.stroke();contexto.beginPath();contexto.textAlign = "left";contexto.fillStyle = "black";for (i=0; i<outLines.length; i++){contexto.fillText(outLines[i], 50,(canvas.height/2)-(30*outLines.length/2)+((i+1)*30));
 } contexto.lineWidth = 5; contexto.stroke(); messagePlayAudio(typeMessage);
 goURL(urlMessage,timeOnMessage,goURLTarget,typeMessage,tiTimeType);}},1);}
-if (typeMessage=="Error"){backAct(timeOnMessage,oldTypeGame);} if (typeMessage=="Time"){if (tiTimeType==1){timeAct=timeIni;backTime(timeOnMessage);backAct(timeOnMessage,oldTypeGame);}if (tiTimeType==2){backSol(timeOnMessage,oldTypeGame);}}
-}
-function goURL(url,seg,tar,tM,tT){
+if (typeMessage=="Error"){backAct(timeOnMessage,oldTypeGame,"0");}
+if (typeMessage=="Time"){if (tiTimeType==1){timeAct=timeIni;backTime(timeOnMessage);backAct(timeOnMessage,oldTypeGame,"0");}if (tiTimeType==2){backSol(timeOnMessage,oldTypeGame);}}}
+function goURL(url,seg,tar,tM, tT){
 var state;
 if (tM == "Ok") {state="ok";}
 if (tM == "Attempts"){state="erro";}
@@ -90,14 +107,35 @@ if (tM == "Time" && tT==0 && goURLRepeat){parent.recarga()}
 if (tM == "Time" && tT==2 && goURLRepeat){parent.recarga()}
 }
 function messagePlayAudio(typeMessage){}
-function backAct(seg,oldTypeGame){setTimeout(function(){paintBack();isShowMessage=false;
+function backAct(seg,oldTypeGame,type){setTimeout(function(){isShowMessage=false;
 document.getElementById("ardoraActCanvas").style.zIndex=0; document.getElementById("ardoraActCanvas").style["visibility"]="hidden";typeGame=oldTypeGame;
+showCorrect();
 },seg*1000);}
 function backTime(seg){ setTimeout(function(){timeInterval=setInterval("paintTab()",1000);isShowMessage=false;},seg*1000);}
 function backSol(seg,oldTypeGame){setTimeout(function(){showSol(oldTypeGame);},seg*1000);}
+function paintButtonTime(){var actArea=document.getElementById("ardoraActCanvas"); document.getElementById("ardoraActCanvas").style.zIndex=5;document.getElementById("ardoraActCanvas").style["visibility"]="visible";
+document.getElementById("ardoraTab").style["visibility"]="hidden";
+$("#ardoraActCanvas").css("cursor", "pointer");if (tiTime || tiAttempts || tiScore || tiSuccesses ){clearInterval(timeInterval);}var canvas = document.getElementById("ardoraActCanvas");
+var contexto = canvas.getContext("2d");canvas.width = canvas.width;contexto.globalAlpha = 0.98;contexto.fillStyle = colorButton;contexto.fillRect(0,0,canvas.width,canvas.height);
+contexto.lineWidth = 2;contexto.strokeStyle = colorSele;contexto.rect(5,5,canvas.width-10,canvas.height-10);contexto.stroke();
+contexto.font="14px " + fMenssage;var metricsW = contexto.measureText(textButtonTime).width;var x=(canvas.width / 2)-(metricsW / 2);var y=(canvas.height / 2);
+contexto.beginPath(); contexto.globalAlpha = 1;contexto.lineWidth = 2;contexto.fillStyle = colorBack;var xAnim=canvas.width/2;var wAnim=0;interval = setInterval(function () {
+contexto.strokeStyle = colorText;roundedRect(contexto,xAnim,y-20,wAnim,30,5,colorBack);xAnim-=1;wAnim+=2;if (wAnim>metricsW+30){
+clearInterval(interval);contexto.shadowColor = "black";contexto.shadowBlur = 20;contexto.shadowOffsetX = 10;contexto.shadowOffsetY = 10;
+contexto.stroke();contexto.beginPath();contexto.textAlign = "left";contexto.fillStyle = colorText;contexto.fillText(textButtonTime,x,y);contexto.lineWidth = 5;contexto.stroke();}},1);
+$("#ardoraActCanvas").mousedown(function(e){if (tiTime || tiAttempts || tiScore || tiSuccesses ){timeInterval=setInterval("paintTab()",1000);$("#ardoraActCanvas").css("cursor", "default");
+$("#ardoraActCanvas").unbind("mousedown");document.getElementById("ardoraActCanvas").style.zIndex=0;document.getElementById("ardoraActCanvas").style["visibility"]="hidden";document.getElementById("ardoraTab").style["visibility"]="visible";paintBack();}});}
 function cssColors(){
-$("body").css("background-color",colorBack);$("#ardoraMain").css("color",colorText);$("#ardoraMain").css("font-family",fEnun);$("#ardoraAct").css("font-family",fActi);$("#ardoraTag").css("font-family",fActi);
-$(".bLetter").css("backgroundColor",colorButton);$(".bLetter").css("color",colorBack);
-document.styleSheets[0].insertRule("label:before { background-color: "+colorButton+"; }", 0);
-document.styleSheets[0].insertRule("input[type=checkbox]:checked + label:before {color: "+colorBack+"; }", 0);
+$("body").css("background-color",colorBack);
+$("#ardoraMain").css("color",colorText);
+if ($(".txtCell_input").length !=0) { $(".txtCell_input").css("background-color","#FFFDFD"); $(".txtCell_input").css("color",colorText);};
+if ($(".txtCell_txt").length !=0) { $(".txtCell_txt").css("background-color","#FFFDFD")}
+if ($(".txtCell_txt").length !=0) {var color2="#FF8000";var color1="#FFFDFD";
+$(".txtCell_txt").css("background","-webkit-radial-gradient(center, ellipse, "+color1+","+color2+")");
+$(".txtCell_txt").css("background","-moz-radial-gradient(center,ellipse, "+color1+", "+color2+")");
+$(".txtCell_txt").css("background","-ms-radial-gradient(center, ellipse, "+color1+", "+color2+")");
+$(".txtCell_txt").css("background","-o-radial-gradient(center, ellipse, "+color1+", "+color2+")");
+$(".txtCell_txt").css("background","radial-gradient(ellipse at center, "+color1+", "+color2+")");
+$(".txtCell_txt").css("filter","progid:DXImageTransform.Microsoft.gradient(startColorstr='"+color1+"',endColorstr='"+color2+"')");}
+$("#ardoraMain").css("font-family",fEnun); $(".txtCell").css("font-family",fActi); $("#ardoraAct").css("font-family",fActi);$(".txtCellHome").css("font-family",fActi);$(".txtCell_txt").css("font-family",fActi);
 }
